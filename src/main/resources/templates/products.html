@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="resources/static/css/indexCSS.css" type="text/css" th:href="@{css/indexCSS.css}" media="all"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <title>Web shop</title>
+</head>
+<body>
+
+
+<div class="navbar">
+    <a class="btn btn-primary" role="button">Home</a>
+    <a class="btn btn-primary" th:href="@{/category/1}" role="button">RACUNARI</a>
+    <a class="btn btn-primary" th:href="@{/category/2}" role="button">TELEVIZORI</a>
+</div>
+<div class="kontejner">
+    <div th:each="product: ${productsList}">
+        <div class="shadow p-3 mb-5 bg-white rounded" align="left" >
+            <p th:text="${product.id}"/>
+            <p th:text="${product.title}"/>
+            <p th:text="${product.description}"/>
+            <p th:text="${product.category.titleCategory}"/>
+            <p th:text="${product.price}"/>
+            <a class="btn btn-primary" role="button" th:href="@{/details/{Id}(Id=${product.id})}">Detalji</a>
+        </div>
+    </div>
+</div>
+<style>
+    .shadow{
+        height: 350px;
+        width: 350px;
+        background-color: silver;
+        padding:20px;
+
+
+    }
+    .navbar
+    {height: 400px;
+        width: 100%;
+        background-color: silver;}
+    .kontejner
+    {
+        display: grid;
+        grid-template-columns: auto auto auto;
+        grid-column-gap:50px;
+        horiz-align: center;
+        padding:10px;
+        justify-items: center;
+    }
+
+</style>
+
+</body>
+</html>
