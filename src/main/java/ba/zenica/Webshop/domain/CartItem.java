@@ -7,14 +7,17 @@ import java.util.Objects;
 
 
 @Entity
-public class CartItem implements Serializable{
+public class CartItem {
+
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer id;
+
    @ManyToOne
    @JoinColumn(name = "product_id", nullable = false, referencedColumnName = "id")
     private Product product;
 
-    @Id
     @ManyToOne
     @JoinColumn(name = "cart_id", nullable = false, referencedColumnName = "id")
     private Cart cart;
@@ -52,6 +55,14 @@ public class CartItem implements Serializable{
 
     public void setTotalPrice(Double totalPrice) {
         this.totalPrice = totalPrice;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     @Override

@@ -5,6 +5,8 @@ import ba.zenica.Webshop.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class UserService {
 
@@ -15,7 +17,8 @@ public class UserService {
         return userRepository.findAllById(id);
     }
     public User findUserByUsername(String username){
-        return userRepository.findByUserName(username);
+        Optional<User> user = userRepository.findByUserName(username);
+        return user.get();
     }
 
 

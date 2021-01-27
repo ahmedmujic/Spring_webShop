@@ -14,8 +14,11 @@ public class CartService {
     @Autowired
     CartRepository cartRepository;
 
-    public List<CartItem> getAllItemsFromCart(Integer cartId){
-        return cartRepository.findAllByCartId(cartId);
+    public Cart getAllItemsFromCart(Integer cartId){
+        return cartRepository.getAllById(cartId);
     }
 
+    public void saveCart(Cart cart){
+        cartRepository.save(cart);
+    }
 }

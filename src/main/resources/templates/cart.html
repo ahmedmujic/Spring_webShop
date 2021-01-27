@@ -3,6 +3,9 @@
       xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
     <title>Title</title>
 </head>
 <body>
@@ -18,15 +21,19 @@
     </tr>
     </thead>
     <tbody>
-    <tr>
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>@mdo</td>
+    <tr th:each="cart: ${cartItemsArray}">
+        <th th:text="${cart.getProduct().title}"></th>
+        <th th:text="${cart.getProduct().description}"></th>
+        <td th:text="${cart.getProduct().price}"></td>
+        <td th:text="${cart.getProduct().getCategory().getTitleCategory()}"></td>
+        <td th:text="${cart.getQuantity()}"></td>
+        <td th:text="${cart.getTotalPrice()}"></td>
     </tr>
 
 
     </tbody>
 </table>
+<h1>TOTAL</h1>
+<h1 th:text="${total}"></h1>
 </body>
 </html>

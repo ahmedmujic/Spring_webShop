@@ -32,6 +32,9 @@ public class SecurtiyConfiguration extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/admin").hasAuthority("ADMIN")
                 .antMatchers("/productPage").hasAnyAuthority("USER", "ADMIN")
+                .antMatchers("/cart").hasAnyAuthority("USER","ADMIN")
+                .antMatchers("/addItem/{id}").hasAnyAuthority("USER","ADMIN")
+                .antMatchers("/removeItem/{id}").hasAnyAuthority("USER","ADMIN")
                 .antMatchers("/").permitAll()
                 .and().formLogin();
     }

@@ -24,6 +24,7 @@
             <p th:text="${product.description}"/>
             <p th:text="${product.category.titleCategory}"/>
             <p th:text="${product.price}"/>
+            <a class="btn btn-warning" role="button" th:href="@{/addItem/{Id}(Id=${product.id})}">Dodaj u kosaricu</a>
             <a class="btn btn-primary" role="button" th:href="@{/details/{Id}(Id=${product.id})}">Detalji</a>
         </div>
     </div>
